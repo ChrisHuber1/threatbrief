@@ -1,0 +1,72 @@
+﻿[
+  {
+    "input": {
+      "event": "login_failure",
+      "source": "siem",
+      "severity": "high",
+      "message": "500 failed SSH login attempts from 203.0.113.50 to jumpbox01 in 5 minutes",
+      "timestamp": "2026-01-15T08:30:00Z"
+    },
+    "expected": {
+      "priority": "P1-Critical",
+      "category": "brute_force",
+      "is_false_positive": false
+    }
+  },
+  {
+    "input": {
+      "event": "file_access",
+      "source": "siem",
+      "severity": "medium",
+      "message": "User jsmith accessed 200 files in /finance/reports in 3 minutes",
+      "timestamp": "2026-01-15T09:15:00Z"
+    },
+    "expected": {
+      "priority": "P2-High",
+      "category": "data_exfiltration",
+      "is_false_positive": false
+    }
+  },
+  {
+    "input": {
+      "event": "network_scan",
+      "source": "ids",
+      "severity": "low",
+      "message": "ICMP sweep detected from 10.0.0.100 across /24 subnet",
+      "timestamp": "2026-01-15T10:00:00Z"
+    },
+    "expected": {
+      "priority": "P4-Low",
+      "category": "reconnaissance",
+      "is_false_positive": false
+    }
+  },
+  {
+    "input": {
+      "event": "antivirus",
+      "source": "edr",
+      "severity": "high",
+      "message": "Windows Defender test file EICAR detected on workstation WS042",
+      "timestamp": "2026-01-15T11:00:00Z"
+    },
+    "expected": {
+      "priority": "P5-Info",
+      "category": "malware",
+      "is_false_positive": true
+    }
+  },
+  {
+    "input": {
+      "event": "privilege_change",
+      "source": "siem",
+      "severity": "critical",
+      "message": "Service account svc_backup added to Domain Admins group by unknown process",
+      "timestamp": "2026-01-15T12:30:00Z"
+    },
+    "expected": {
+      "priority": "P1-Critical",
+      "category": "privilege_escalation",
+      "is_false_positive": false
+    }
+  }
+]

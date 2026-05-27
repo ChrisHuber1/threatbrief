@@ -1,0 +1,59 @@
+﻿[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "threatbrief"
+version = "0.1.0"
+description = "Autonomous SOC Analyst - Multi-agent AI security alert triage"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.52",
+    "langgraph>=0.4",
+    "langchain-core>=0.3",
+    "langchain-anthropic>=0.3",
+    "langchain-huggingface>=0.1",
+    "langchain-community>=0.3",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.7",
+    "psycopg[binary]>=3.2",
+    "pgvector>=0.3",
+    "sqlalchemy>=2.0",
+    "transformers>=4.48",
+    "sentence-transformers>=3.4",
+    "huggingface-hub>=0.27",
+    "streamlit>=1.41",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "httpx>=0.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "pytest-cov>=6.0",
+    "ruff>=0.9",
+    "mypy>=1.14",
+]
+eval = [
+    "langsmith>=0.2",
+    "arize-phoenix>=8.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
